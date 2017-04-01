@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+    include Gravtastic
+    gravtastic :secure => true,
+              :filetype => :gif,
+              :size => 120,
+              :class => "img-circle"
     has_many :articles
     before_save { self.email = email.downcase }
     validates :username, presence: true, 
